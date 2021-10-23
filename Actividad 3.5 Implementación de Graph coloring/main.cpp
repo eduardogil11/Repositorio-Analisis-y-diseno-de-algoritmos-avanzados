@@ -26,7 +26,7 @@ bool guardar(int size, vector<vector<bool>> grafo, int colors[]) {
 
 
 // Funcion que establece el color dependiendo del nodo
-bool coloreo(int size, vector<vector<bool>> grafo, int n, int i, int colors[size]) {
+bool coloreo(int size, vector<vector<bool>> grafo, int n, int i, int colors[]) {
 
   if (i == size) {
     if (guardar(size, grafo, colors)) {
