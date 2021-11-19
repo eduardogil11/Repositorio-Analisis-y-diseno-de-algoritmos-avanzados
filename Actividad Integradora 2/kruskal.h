@@ -43,7 +43,7 @@ class G {
 
     void Kruskal() {
         vector <D> t;
-        int *s = new int;
+        int *s = new int[graph];
         memset(s, -1, sizeof(int) *graph);
         sort(ar.begin(), ar.end());
 

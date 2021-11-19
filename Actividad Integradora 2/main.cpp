@@ -33,18 +33,16 @@ int main() {
                 y.push_back(m);
             }
 
-            z.push_back(y);
-            y.clear();
+            z.push_back(y); y.clear();
         }
 
         G res(n);
-
         cout << "-------------------------------------\nProblem 1" << endl;
         res.Dijkstra(x, n);
         res.Kruskal();
         
         cout << "-------------------------------------\nProblem 2" << endl;
-        //Tsp(x, inicio, n);
+        Tsp(x, n, inicio);
 
         cout << "-------------------------------------\nProblem 3" << endl;
         cout << "Maximum flow from " << inicio << " to " << fin << " is " << MaxFlow(z, inicio, fin) << endl;

@@ -8,58 +8,54 @@
 
 using namespace std;
 
-void TSP(vector<int>& graph, int m, int n) {
+void Tsp(vector<int>& graph, int m, int n) {
 
-    int G[n][n], con = 0;
-    for(int i = 0; i< n; i++){
-      for(int j = 0; j< n; j++){
-        G[i][j] = graph[con];
-        con++;
+    int G[n][n], c = 0;
+    for(int i = 0; i< n; i++) {
+      for(int j = 0; j< n; j++) {
+        G[i][j] = graph[c];
+        c++;
       }
     }
 
     vector <int> V; vector <int> v;
     v.push_back(0);
 
-    for (int i = 0; i < n; i++){
+    for (int i = 0; i < n; i++) {
       if (i != m)
         V.push_back(i);
-
     }
 
-    int min_path = INT_MAX;
-    int res = 0;
+    int q = INT_MAX, ans = 0;
     do {
-        int current_pathweight = 0;int k = m;
+        int p = 0, k = m;
         vector<int> T;
 
         for (int i = 0; i < V.size(); i++) {
-            current_pathweight += G[k][V[i]];
-            k = V[i];
+            p += G[k][V[i]]; k = V[i];
             T.push_back(V[i]);
         }
 
-        current_pathweight += G[k][m];
-        res = min_path;
-        min_path = min(min_path, current_pathweight);
+        p += G[k][m];
+        ans = q;
+        q = min(q, p);
 
-        if(res != min_path){
+        if(ans != q){
           v.clear(); v.push_back(m);
           for(int i = 0; i < T.size(); i++)
             v.push_back(T[i]); v.push_back(m);
         }
 
         T.clear();
- 
     } 
-    
-    while (next_permutation(V.begin(), V.end()));
-    if(min_path < 0) {
+  
+    while(next_permutation(V.begin(), V.end()));
+    if(q < 0) {
       cout << "There is no possible route." << endl;
     } 
     
     else {
-      cout <<endl<< "Minimum cost: " << min_path << endl; cout << "Path: ";
+      cout << "Minimum cost: " << q << "\nPath: ";
       for(int i = 0; i < v.size(); i++)
       cout << v[i] << " "; cout << endl;
     }
